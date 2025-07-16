@@ -1,0 +1,34 @@
+#include "mbed.h"
+
+// Define LED ON durations
+#define LED1_ON_TIME 100ms
+#define LED2_ON_TIME 150ms
+#define LED3_ON_TIME 200ms
+
+// Initialize the digital outputs for LEDs
+DigitalOut led1(LED1);
+DigitalOut led2(LED2);
+DigitalOut led3(LED3);
+
+void blink_leds_in_pattern() {
+    while (true) {
+        // Turn on LED1 for 200ms
+        led1 = 1;
+        ThisThread::sleep_for(LED1_ON_TIME);
+        led1 = 0;
+
+        // Turn on LED2 for 400ms
+        led2 = 1;
+        ThisThread::sleep_for(LED2_ON_TIME);
+        led2 = 0;
+
+        // Turn on LED3 for 600ms
+        led3 = 1;
+        ThisThread::sleep_for(LED3_ON_TIME);
+        led3 = 0;
+    }
+}
+
+int main() {
+    blink_leds_in_pattern(); // Start the LED pattern sequence
+}
